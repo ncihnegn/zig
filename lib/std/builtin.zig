@@ -777,6 +777,8 @@ else if (@hasDecl(root, "panic")) // Deprecated, use `Panic` instead.
     DeprecatedPanic
 else if (builtin.zig_backend == .stage2_riscv64)
     std.debug.SimplePanic // https://github.com/ziglang/zig/issues/21519
+else if (builtin.zig_backend == .stage2_x86_64 and builtin.os.tag == .macos)
+    std.debug.SimplePanic // https://github.com/ziglang/zig/issues/21529
 else
     std.debug.FormattedPanic;
 
